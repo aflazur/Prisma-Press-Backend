@@ -1,7 +1,7 @@
-import { Response, response } from "express";
+import { Response } from "express";
 
 type TMeta = {
-    path: string;
+    page: number;
     limit: number;
     total: number;
 }
@@ -11,10 +11,10 @@ type TResponseData<T> = {
     statusCode: number;
     message: string;
     data: T;
-    meta?: TMeta;
+    meta?: TMeta
 }
 
-export const sendResponse = <T>(res:Response, data : TResponseData<T>) => {
+export const sendResponse = <T>(res: Response, data: TResponseData<T>) => {
     res.status(data.statusCode).json({
         success: data.success,
         statusCode: data.statusCode,
