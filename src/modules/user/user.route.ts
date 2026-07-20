@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Role } from "../../../generated/prisma/enums";
-import { userController } from "./user.controller";
 import { auth } from "../../middlewares/auth";
+import { userController } from "./user.controller";
 
 const router = Router();
 
@@ -42,11 +42,11 @@ router.get("/me",
 //     next();
 // }, 
 
-auth(Role.ADMIN, Role.USER, Role.Author),
+auth(Role.ADMIN, Role.USER, Role.AUTHOR),
 
 userController.getMyProfile);
 
 
-router.put("/my-profile", auth(Role.ADMIN, Role.USER, Role.Author), userController.updateMyProfile);
+router.put("/my-profile", auth(Role.ADMIN, Role.USER, Role.AUTHOR), userController.updateMyProfile);
 
 export const userRoutes = router;
